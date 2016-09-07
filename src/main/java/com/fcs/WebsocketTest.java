@@ -13,12 +13,17 @@ public class WebsocketTest{
     @OnMessage
     public String hello(String message) {
         System.out.println("Received : "+ message);
-        return message;
+        return "ok,thank u";
     }
 
     @OnOpen
     public void myOnOpen(Session session) {
         System.out.println("WebSocket opened: " + session.getId());
+        String prefix = "websocket";
+        int useCode = 18;
+        SessionUtils.put(prefix,useCode,session);
+        SessionUtils.putRedis("websocket_18",session);
+
     }
 
     @OnClose
