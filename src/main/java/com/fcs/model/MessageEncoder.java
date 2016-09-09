@@ -1,4 +1,4 @@
-package com.fcs;
+package com.fcs.model;
 
 import javax.websocket.EncodeException;
 import javax.websocket.Encoder;

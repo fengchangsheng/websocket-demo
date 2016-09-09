@@ -1,9 +1,8 @@
-package com.fcs;
+package com.fcs.common;
 
-import org.mission.jedis.proxy.RedisProxyFactory;
+import com.fcs.mq.JMSConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -17,18 +16,25 @@ public class AppListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         try {
-            logger.info("====>[file-webapp] listener has running.<===");
-            RedisProxyFactory.start();
-            logger.info("====>[file-webapp] listener has running successfully<====");
+            long begin = System.currentTimeMillis();
+            long now = 0, current = 0;
+
+            logger.info("====>[websocket-demo] listener has running.<===");
+            // 1. active MQ 启动
+            now = begin;
+            JMSConsumer.start();
+            current = System.currentTimeMillis();
+            logger.info("[LOAD(MQ)] cost={}ms.", current - now);
+            logger.info("====>[websocket-demo] listener has running successfully<====");
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("====>[file-webapp] listener started with errors<======",e);
+            logger.error("====>[websocket-demo] listener started with errors<======",e);
         }
 
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        RedisProxyFactory.releaseProxy();
+
     }
 }

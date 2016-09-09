@@ -8,7 +8,7 @@
 <body>
 
 <script language="javascript" type="text/javascript">
-    var wsUri = getRootUri() + "/hello";
+    var wsUri = getRootUri() + "/websocket/18";
 
     function getRootUri() {
         return "ws://" + (document.location.hostname == "" ? "localhost" : document.location.hostname) + ":" +

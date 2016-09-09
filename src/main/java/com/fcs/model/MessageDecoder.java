@@ -1,4 +1,4 @@
-package com.fcs;
+package com.fcs.model;
 
 import javax.websocket.DecodeException;
 import javax.websocket.Decoder;

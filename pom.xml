@@ -7,6 +7,19 @@
     <version>1.0-SNAPSHOT</version>
     <name>websocket-demo Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <distributionManagement>
+        <repository>
+            <id>train_releases</id>
+            <url>http://120.24.172.204:8081/nexus/content/repositories/train_releases</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>train_snapshot</id>
+            <url>http://120.24.172.204:8081/nexus/content/repositories/train_snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -24,15 +37,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mission</groupId>
-            <artifactId>mission-redis-proxy</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>5.14.0</version>
         </dependency>
 
     </dependencies>
